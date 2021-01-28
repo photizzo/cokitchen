@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cokitchen/home/foods.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -136,6 +137,29 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
 }
 
 class CollapsingList extends StatelessWidget {
+  final contentData = [
+    Food("assets/images/jollof.png", "Jollof & Co.", "Delicious everyday Naija food", "Items as low as N500", "assets/images/dummy.png"),
+    Food("assets/images/mamaput.jpeg", "Mama Put", "Authentic Native Nigerian Food", "Items as low as N500", "assets/images/dummy.png"),
+    Food("assets/images/pizza.jpg", "Papa's Pizza", "Papa's Pizza", "Original wood fired pizza", "assets/images/dummy.png"),
+    Food("assets/images/burger.jpeg", "Burger Shop", "Delicious burger", "Items as low as N500", "assets/images/dummy.png"),
+    Food("assets/images/burger.jpeg", "Paste Factor", "Savory pizza mixes", "Items as low as N500", "assets/images/dummy.png"),
+    Food("assets/images/jollof.png", "Jollof & Co.", "Delicious everyday Naija food", "Items as low as N500", "assets/images/dummy.png"),
+    Food("assets/images/mamaput.jpeg", "Mama Put", "Authentic Native Nigerian Food", "Items as low as N500", "assets/images/dummy.png"),
+    Food("assets/images/pizza.jpg", "Papa's Pizza", "Papa's Pizza", "Original wood fired pizza", "assets/images/dummy.png"),
+    Food("assets/images/burger.jpeg", "Burger Shop", "Delicious burger", "Items as low as N500", "assets/images/dummy.png"),
+    Food("assets/images/burger.jpeg", "Paste Factor", "Savory pizza mixes", "Items as low as N500", "assets/images/dummy.png"),
+    Food("assets/images/jollof.png", "Jollof & Co.", "Delicious everyday Naija food", "Items as low as N500", "assets/images/dummy.png"),
+    Food("assets/images/mamaput.jpeg", "Mama Put", "Authentic Native Nigerian Food", "Items as low as N500", "assets/images/dummy.png"),
+    Food("assets/images/pizza.jpg", "Papa's Pizza", "Papa's Pizza", "Original wood fired pizza", "assets/images/dummy.png"),
+    Food("assets/images/burger.jpeg", "Burger Shop", "Delicious burger", "Items as low as N500", "assets/images/dummy.png"),
+    Food("assets/images/burger.jpeg", "Paste Factor", "Savory pizza mixes", "Items as low as N500", "assets/images/dummy.png"),
+    Food("assets/images/jollof.png", "Jollof & Co.", "Delicious everyday Naija food", "Items as low as N500", "assets/images/dummy.png"),
+    Food("assets/images/mamaput.jpeg", "Mama Put", "Authentic Native Nigerian Food", "Items as low as N500", "assets/images/dummy.png"),
+    Food("assets/images/pizza.jpg", "Papa's Pizza", "Papa's Pizza", "Original wood fired pizza", "assets/images/dummy.png"),
+    Food("assets/images/burger.jpeg", "Burger Shop", "Delicious burger", "Items as low as N500", "assets/images/dummy.png"),
+    Food("assets/images/burger.jpeg", "Paste Factor", "Savory pizza mixes", "Items as low as N500", "assets/images/dummy.png")
+  ];
+
   SliverPersistentHeader makeHeader() {
     return SliverPersistentHeader(
       pinned: true,
@@ -301,9 +325,8 @@ class CollapsingList extends StatelessWidget {
                           "assets/images/promotion_image.png",
                           fit: BoxFit.fill,
                         ),
-                        errorWidget: (context, url, error) => Image.asset(
-                            "assets/images/promotion_image.png",
-                            fit: BoxFit.fill),
+                        errorWidget: (context, url, error) =>
+                            Image.asset("assets/images/promotion_image.png", fit: BoxFit.fill),
                       ),
                     ),
                   ),
@@ -361,7 +384,7 @@ class CollapsingList extends StatelessWidget {
                                   ),
                                   errorWidget: (context, url, error) =>
                                       Image.asset(
-                                          "assets/images/promotion_image.png",
+                                          contentData[index].imageUrl,
                                           fit: BoxFit.fill),
                                 ),
                               ),
@@ -398,20 +421,14 @@ class CollapsingList extends StatelessWidget {
                                                 fontStyle: FontStyle.normal,
                                                 fontSize: 17.0),
                                             textAlign: TextAlign.left),
-                                        SizedBox(
-                                          height: 2,
-                                        ),
-                                        Text("Delicious everyday Naija food",
+                                        Text(contentData[index].description,
                                             style: const TextStyle(
                                                 color: const Color(0xff919191),
                                                 fontWeight: FontWeight.w400,
                                                 fontStyle: FontStyle.normal,
                                                 fontSize: 14.0),
                                             textAlign: TextAlign.left),
-                                        SizedBox(
-                                          height: 2,
-                                        ),
-                                        Text("Items as low as ₦500",
+                                        Text(contentData[index].priceDetails,
                                             style: const TextStyle(
                                                 color: const Color(0xff919191),
                                                 fontWeight: FontWeight.w400,
@@ -444,7 +461,7 @@ class CollapsingList extends StatelessWidget {
                 ),
               );
             },
-            childCount: 10,
+            childCount: contentData.length,
           ),
         ),
       ],
